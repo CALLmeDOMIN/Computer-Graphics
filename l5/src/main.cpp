@@ -87,6 +87,8 @@ int main() {
   glShaderSource(vertexShader, 1, &vertexShaderSource, NULL);
   glCompileShader(vertexShader);
 
+  glEnable(GL_DEPTH_TEST);
+
   GLint status;
   GLchar error_message[512];
   glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &status);
@@ -116,7 +118,9 @@ int main() {
     std::cout << "Error (Shader program): " << error_message << "\n";
   }
 
-  glDetachShader(shaderProgram, vertexShader);GLfloat vertices[] = {
+  glDetachShader(shaderProgram, vertexShader);
+  
+  GLfloat vertices[] = {
       -0.8f, -0.3f, 0.0f,    1.0f, 0.0f, 0.0f,   0.0f, 0.0f,
       -0.2f, -0.3f, 0.0f,    1.0f, 0.0f, 0.0f,   1.0f, 0.0f, 
       -0.2f, 0.3f, 0.0f,    1.0f, 0.0f, 0.0f,   1.0f, 1.0f, 
